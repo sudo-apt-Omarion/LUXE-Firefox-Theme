@@ -7,7 +7,7 @@ Transform your browsing experience with LUXE, a premium, dark-gold aesthetic cus
 ## ⚡ Upgrade to the Premium Setup Pack (\$4.99)
 While the core CSS files are available here for manual configuration, you can get the ultimate, hassle-free experience by purchasing the full **LUXE Premium Pack**.
 
-📥 **[Get the Full LUXE Pack on Selar](https://selar.com)**
+📥 **[Get the Full LUXE Pack on Selar](https://selar.com/2g2x19qm8v?currency=USD)**
 
 ### What you get in the Premium Pack:
 * **Luxe.xpi:** Custom theme styling configuration for instant colors.
