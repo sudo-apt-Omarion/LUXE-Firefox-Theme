@@ -1,0 +1,179 @@
+/* ============================================================
+   GOLD & BLACK LUXURY THEME — userChrome.css (v2)
+   Styles Firefox's real chrome: tabs, toolbar, URL bar.
+   Requires: toolkit.legacyUserProfileCustomizations.stylesheets = true
+   (the installer sets this for you)
+
+   NOTE ON THE OUTER WINDOW BORDER: the thin gold frame around the
+   *entire* browser window in the mockup is drawn by the OS window
+   manager, not by Firefox — userChrome.css can only reach the
+   toolbar/tab area inside the window, not the window decoration
+   itself. That part isn't something CSS here can change.
+   ============================================================ */
+
+:root {
+  --gold: #c9a24a;
+  --gold-bright: #f2cf7e;
+  --gold-dim: #5c4a20;
+  --bg-black: #050403;
+  --bg-panel: #0a0806;
+  --glow: rgba(201, 162, 74, 0.45);
+
+  /* Firefox's own urlbar/toolbar-field variables — overriding these
+     directly is what stops the default grey background + blue
+     focus-ring from showing through, instead of only styling the
+     visible elements (which isn't enough on its own). */
+  --toolbar-field-background-color: var(--bg-panel) !important;
+  --toolbar-field-color: var(--gold-bright) !important;
+  --toolbar-field-border-color: var(--gold) !important;
+  --toolbar-field-focus-background-color: var(--bg-panel) !important;
+  --toolbar-field-focus-color: var(--gold-bright) !important;
+  --toolbar-field-focus-border-color: var(--gold-bright) !important;
+  --urlbar-box-shadow: 0 0 14px 2px rgba(201, 162, 74, 0.45) !important;
+  --urlbarView-highlight-background: rgba(201, 162, 74, 0.18) !important;
+  --lwt-toolbar-field-focus-color: var(--gold-bright) !important;
+  --lwt-toolbar-field-focus: var(--bg-panel) !important;
+}
+
+#TabsToolbar,
+#titlebar {
+  background-color: var(--bg-black) !important;
+  border-bottom: 1px solid var(--gold-dim) !important;
+  box-shadow: none !important;
+}
+
+.tabbrowser-tab .tab-background {
+  background-color: transparent !important;
+  border-radius: 8px !important;
+}
+
+.tabbrowser-tab[selected] .tab-background {
+  background-color: var(--bg-panel) !important;
+  box-shadow: inset 0 0 0 1px var(--gold-dim) !important;
+}
+
+.tabbrowser-tab .tab-label {
+  color: var(--gold-bright) !important;
+}
+
+.tabbrowser-tab .tab-icon-image,
+.tabbrowser-tab .tab-close-button,
+#tabs-newtab-button,
+#new-tab-button {
+  filter: sepia(1) saturate(4) hue-rotate(-8deg) brightness(1.3) !important;
+}
+
+#nav-bar {
+  background-color: var(--bg-black) !important;
+  background-image: none !important;
+  border-bottom: 1px solid var(--gold-dim) !important;
+}
+
+#back-button, #forward-button, #reload-button, #stop-button,
+#home-button, #downloads-button, #library-button, #PanelUI-button,
+#sidebar-button, #fxa-toolbar-menu-button, #save-to-pocket-button {
+  filter: sepia(1) saturate(5) hue-rotate(-8deg) brightness(1.35) !important;
+}
+
+toolbar .toolbarbutton-1:not([disabled]):hover {
+  background-color: rgba(201, 162, 74, 0.12) !important;
+  border-radius: 8px !important;
+}
+
+/* The gold pill URL bar with ambient glow.
+   Multiple selectors + !important because Firefox re-skins this
+   element differently across versions/themes (breakout, focused,
+   with/without an installed lightweight theme) — covering all of
+   them is what stops the default grey/blue from winning. */
+#urlbar,
+#urlbar-background,
+#urlbar[breakout] #urlbar-background,
+#urlbar[breakout][breakout-extend] #urlbar-background,
+#urlbar[focused="true"] #urlbar-background,
+moz-input-box {
+  background-color: var(--bg-panel) !important;
+  background-image: none !important;
+  color: var(--gold-bright) !important;
+  border: 1px solid var(--gold) !important;
+  border-radius: 999px !important;
+  outline: none !important;
+  box-shadow:
+    0 0 0 1px rgba(201, 162, 74, 0.2),
+    0 0 14px 2px var(--glow) !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+#urlbar[focused="true"] #urlbar-background {
+  border-color: var(--gold-bright) !important;
+  outline: none !important;
+  box-shadow:
+    0 0 0 1px rgba(242, 207, 126, 0.35),
+    0 0 22px 4px var(--glow) !important;
+}
+
+#urlbar-input, .searchbar-textbox, #urlbar-input-box {
+  background: transparent !important;
+  color: var(--gold-bright) !important;
+  caret-color: var(--gold) !important;
+}
+
+#urlbar-input::placeholder {
+  color: var(--gold-dim) !important;
+}
+
+#identity-icon, #tracking-protection-icon, #star-button,
+#urlbar-search-button, #page-action-buttons image, .urlbar-icon,
+#urlbar-container image, #urlbar image,
+#urlbar-searchmode-switcher, #urlbar-searchmode-switcher image,
+.urlbar-searchmode-switcher-icon {
+  filter: sepia(1) saturate(6) hue-rotate(-10deg) brightness(1.35) contrast(1.05) !important;
+}
+
+.urlbarView-favicon {
+  filter: sepia(1) saturate(4) hue-rotate(-8deg) brightness(1.3) !important;
+}
+
+#PersonalToolbar {
+  background-color: var(--bg-black) !important;
+  border-bottom: 1px solid var(--gold-dim) !important;
+}
+
+.bookmark-item {
+  color: var(--gold-bright) !important;
+}
+
+.bookmark-item:hover {
+  background-color: rgba(201, 162, 74, 0.12) !important;
+  border-radius: 6px !important;
+}
+
+.bookmark-item > .toolbarbutton-icon {
+  filter: sepia(1) saturate(4) hue-rotate(-8deg) brightness(1.3) !important;
+}
+
+menupopup, panel {
+  --panel-background: var(--bg-panel) !important;
+  --panel-color: var(--gold-bright) !important;
+  --panel-border-color: var(--gold-dim) !important;
+}
+
+menuitem, toolbarbutton { color: var(--gold-bright) !important; }
+menuitem:hover, menu:hover { background-color: rgba(201, 162, 74, 0.15) !important; }
+
+* { scrollbar-color: var(--gold-dim) var(--bg-black) !important; }
+
+/* Recolor the "Extension (Name)" indicator that appears next to the
+   urlbar on extension-controlled pages (like the new tab page) so it
+   matches the theme instead of showing Firefox's default grey. This
+   is purely cosmetic -- the indicator itself stays, which is correct,
+   it's a legitimate security cue that shouldn't be hidden. */
+#urlbar-label-box {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--gold-dim) !important;
+  border-radius: 999px !important;
+  margin-right: 6px !important;
+}
+
+#urlbar-label {
+  color: var(--gold-bright) !important;
+}

@@ -1,0 +1,18 @@
+/* ============================================================
+   userContent.css
+   Deliberately minimal. The previous approach of patching
+   about:newtab directly (filters on real favicons, selector
+   hacks per-site) is what produced the blank/broken tiles you
+   saw — that page is CSP-locked and its icons are raster
+   favicons, not something CSS can reliably re-skin. The real
+   fix is replacing the New Tab page outright (see the New Tab
+   Override step in the installer output) rather than patching
+   the locked one. This file just keeps scrollbars gold on
+   ordinary web pages.
+   ============================================================ */
+
+@-moz-document url-prefix("http://"), url-prefix("https://") {
+  * {
+    scrollbar-color: #5c4a20 #050403 !important;
+  }
+}
